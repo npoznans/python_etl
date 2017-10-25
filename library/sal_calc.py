@@ -5,13 +5,20 @@ import pandas
 
 def timeline(salary, age, presults, raise_range, bonus):
     years = 65 - int(age)
+    if presults == 'n':
+        pass
+    else:
+        print(presults)
     for y in range(0, years):
         raises = randint(0, int(raise_range))
         bonus = randint(0, int(bonus))
         print(y)
-        nsal = salary * raises
-        print(nsal)
+        salary += int(salary) * int(raises)
+        print(salary)
 
+
+def write_to_csv(vals):
+    pass
 
 
 salary = input("Enter base salary\n\n>")
@@ -20,27 +27,27 @@ raise_range = input("Enter most of the raise amount\n\n>")
 bonus = input("Enter most amount of bonus amount\n\n>")
 age = input("Enter a starting age\n\n>")
 
-if salary == '':
+if salary == '' or int(salary) <= 0 or str(salary).isalpha():
     salary = 100000
 else:
-    salary
-if presults == '':
+    pass
+if presults == '' or str(salary).isdigit():
     presults = 'y'
 else:
-    presults
-if raise_range == '' or int(raise_range) <= 0 or str(raise_range).isalpha:
+    pass
+if raise_range == '' or int(raise_range) <= 0 or str(raise_range).isalpha():
     raise_range = 10
 else:
-    raise_range
-if bonus == '' or int(bonus) < 0 or str(bonus).isalpha:
+    pass
+if bonus == '' or int(bonus) < 0 or str(bonus).isalpha():
     bonus = 10
 else:
-    bonus
-if age == '' or int(age) < 18 or str(age).isalpha:
+    pass
+if age == '' or int(age) < 18 or str(age).isalpha():
     age = 18
 else:
-    age
+    pass
 
-print(salary, presults, raise_range, bonus, age)
+pr = '{} starting salary, {} all output, {} max raise, {} max bonus, {} starting age'.format(salary, presults, raise_range, bonus, age)
 
-timeline(salary, age, presults, raise_range, bonus)
+timeline(salary, age, pr, raise_range, bonus)
