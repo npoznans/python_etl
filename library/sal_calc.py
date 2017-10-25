@@ -15,10 +15,14 @@ def timeline(salary, age, presults, raise_range, bonus):
         print(y)
         salary += int(salary) * int(raises)
         print(salary)
+        write_to_csv(salary)
 
 
 def write_to_csv(vals):
-    pass
+    with open('sal_sim.csv', 'r') as csv_file:
+        rows = csv.writer(csv_file, delimiter = ',')
+        for row in vals:
+            rows.writerow(vals)
 
 
 salary = input("Enter base salary\n\n>")
