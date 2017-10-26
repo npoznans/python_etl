@@ -10,10 +10,11 @@ def timeline(salary, age, presults, raise_range, bonus):
     else:
         print(presults)
     for y in range(0, years):
-        raises = randint(0, int(raise_range))
-        bonus = randint(0, int(bonus))
+        raises = randint(0, int(raise_range)) * 0.01 + 1
+        bonus = randint(0, int(bonus)) * .01
         print(y)
-        salary = int(salary) * round((raises * 0.01 + 1), 2)
+        nsal = int(salary) * raises
+        salary = nsal
         print(salary)
         # write_to_csv(salary)
 
