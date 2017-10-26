@@ -26,32 +26,40 @@ def write_to_csv(vals):
             rows.writerow(vals)
 
 
-salary = input("Enter base salary\n\n>")
-presults = input("Would you like to see all of the output\n'y'\tor\t'n'\n\n>")
-raise_range = input("Enter most of the raise amount\n\n>")
-bonus = input("Enter most amount of bonus amount\n\n>")
-age = input("Enter a starting age\n\n>")
+inquire = input("Do you want to make this a dynamic simulator\t'y' or 'n'\n\n>")
 
-if salary == '' or int(salary) <= 0 or str(salary).isalpha():
+if str(inquire.lower()) == 'y' or inquire == 'yes':
+    salary = input("Enter base salary\n\n>")
+    presults = input("Would you like to see all of the output\n'y'\tor\t'n'\n\n>")
+    raise_range = input("Enter most of the raise amount\n\n>")
+    bonus = input("Enter most amount of bonus amount\n\n>")
+    age = input("Enter a starting age\n\n>")
+    if salary == '' or int(salary) <= 0 or str(salary).isalpha():
+        salary = 100000
+    else:
+        pass
+    if presults == '' or str(salary).isdigit():
+        presults = 'y'
+    else:
+        pass
+    if raise_range == '' or int(raise_range) <= 0 or str(raise_range).isalpha():
+        raise_range = 10
+    else:
+        pass
+    if bonus == '' or int(bonus) < 0 or str(bonus).isalpha():
+        bonus = 10
+    else:
+        pass
+    if age == '' or int(age) < 18 or str(age).isalpha():
+        age = 18
+    else:
+        pass
+else:
     salary = 100000
-else:
-    pass
-if presults == '' or str(salary).isdigit():
-    presults = 'y'
-else:
-    pass
-if raise_range == '' or int(raise_range) <= 0 or str(raise_range).isalpha():
-    raise_range = 10
-else:
-    pass
-if bonus == '' or int(bonus) < 0 or str(bonus).isalpha():
+    presults = 'n'
+    raise_range = 5
     bonus = 10
-else:
-    pass
-if age == '' or int(age) < 18 or str(age).isalpha():
     age = 18
-else:
-    pass
 
 pr = '{} starting salary, {} all output, {} max raise, {} max bonus, {} starting age'.format(salary, presults, raise_range, bonus, age)
 
