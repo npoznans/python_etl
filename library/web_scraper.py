@@ -1,17 +1,15 @@
 import csv
 import requests
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 url = []
 i = []
 
-def iter(url, i):
-
-
+# def iter(url, i):
 url = "http://www.showmeboone.com/sheriff/JailResidents/JailResidents.asp"
 response = requests.get(url)
 html = response.content
-print html
+print(html)
 
 soup = BeautifulSoup(html)
 table = soup.find('tbody', attrs={'class': 'stripe'})
@@ -28,6 +26,3 @@ outfile = open("./inmates.csv", "wb")
 writer = csv.writer(outfile)
 writer.writerow(["Last", "First", "Middle", "Gender", "Race", "Age", "City", "State"])
 writer.writerows(list_of_rows)
-
-
-class Scraper:
