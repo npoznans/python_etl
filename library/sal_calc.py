@@ -6,8 +6,8 @@ def timeline(salary, age, presults, raise_range, bonus):
     years = 65 - int(age)
     sal_hist = []
     for y in range(0, years):
-        raises = randint(0, raise_range) * 0.01 + 1
-        bonus = randint(0, bonus) * .01
+        raises = randint(0, str(raise_range)) * 0.01 + 1
+        bonus = randint(0, str(bonus)) * .01
         nsal = int(salary) * raises
         salary = nsal
         sal_hist.append(salary)
@@ -29,7 +29,7 @@ def write_to_csv(vals):
 def simulator():
     pass
 
-def debt_calc(debt, payment, bump):
+def debt_calc(debt, avg_payment, bump):
     i = 0
     interest = round((12.99 * 365)/12, 2)
     while debt >= 0:
@@ -49,9 +49,12 @@ def debt_calc(debt, payment, bump):
 
 
 inquire = input("Do you want to make this a dynamic simulator\t'y' or 'n'\n\n>")
-monte_carlo =
+monte_carlo = input("Do you want to do Monte Carlo simulations?\t'y' or 'n'\n\n>")
+if monte_carlo == 'yes' or monte_carlo == 'y':
+    debt_calc(120000, 1300, 5000)[-1]
+else:
+    pass
 pway = input("Do you want to do 'retirement' or 'salary'?>\n\n>")
-
 if str(inquire.lower()) == 'y' or inquire == 'yes':
     if str(pway.lower()) == 'salary':
         salary = input("Enter base salary\n\n>")
@@ -80,18 +83,13 @@ if str(inquire.lower()) == 'y' or inquire == 'yes':
         else:
             pass
     else:
-        salary = 100000
-        presults = 'n'
-        raise_range = 5
-        bonus = 10
-        age = 18
+        timeline(100000, 30, 'n', 10, 10)
 elif str(pway.lower()) == 'retirement' and str(inquire.lower()) == 'n':
-    debt_calc(70000, 1000, 6000)
+        debt_calc(10000, 1000, 6000)
 else:
-    debt_calc(70000, 1000, 6000)
-    timeline(12000, 31, 'n', 10, 10)
+    debt_calc(10000, 1000, 6000)
 
 
-pr = '{} starting salary, {} all output, {} max raise, {} max bonus, {} starting age'.format(salary, presults, raise_range, bonus, age)
-headers = pr
-timeline(salary, age, pr, raise_range, bonus)
+# pr = '{} starting salary, {} all output, {} max raise, {} max bonus, {} starting age'.format(salary, presults, raise_range, bonus, age)
+# headers = pr
+# timeline(salary, age, pr, raise_range, bonus)
